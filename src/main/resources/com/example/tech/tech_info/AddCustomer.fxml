@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" prefHeight="450.0" prefWidth="440.0" spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.AddCustomerDialogController" style="-fx-padding: 20;">
+
+    <Label graphicTextGap="7.0" text="Add New Customer" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <Label text="Name:" style="-fx-font-size: 14px; -fx-min-width: 80px;" alignment="CENTER_RIGHT"/>
+        <TextField fx:id="nameField" promptText="Enter customer name" style="-fx-pref-width: 250px;"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Address:" style="-fx-font-size: 14px; -fx-min-width: 80px;" alignment="CENTER_RIGHT"/>
+        <TextField fx:id="addressField" promptText="Enter customer address" style="-fx-pref-width: 250px;"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Mobile:" style="-fx-font-size: 14px; -fx-min-width: 80px;" alignment="CENTER_RIGHT"/>
+        <TextField fx:id="mobileField" promptText="Enter customer mobile number" style="-fx-pref-width: 250px;"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Payment:" style="-fx-font-size: 14px; -fx-min-width: 80px;" alignment="CENTER_RIGHT"/>
+        <TextField fx:id="paymentField" promptText="Enter payment amount" style="-fx-pref-width: 250px;"/>
+    </HBox>
+
+    <Button fx:id="addCustomerButton" text="Add Customer" style="-fx-font-size: 14px; -fx-pref-width: 150px;" alignment="CENTER" onAction="#handleAddCustomer"/>
+
+</VBox>
+
