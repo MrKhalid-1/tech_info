@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.tech.tech_info.controller.TransactionHistory.TransactionHistory">
+    <Label text="Payment History"/>
+
+    <TableView fx:id="historyTable">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" />
+            <TableColumn fx:id="customerIdColumn" text="customerId" />
+            <TableColumn fx:id="commentColumn" text="Comment" />
+            <TableColumn fx:id="amountColumn" text="Amount" />
+            <TableColumn fx:id="receivedDateColumn" text="Received Date" />
+        </columns>
+    </TableView>
+
+    <Button text="Close" onAction="#handleClose" />
+</VBox>

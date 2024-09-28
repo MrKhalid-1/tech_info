@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.111"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.loginPage.LoginController"
+      style="-fx-background-color: #f0f2f5; -fx-padding: 50;">
+<!-- Header Label -->
+<Label text="Login / Signup" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+<!-- VBox containing the form -->
+<VBox spacing="15" style="-fx-background-color: #ffffff; -fx-padding: 30; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+
+    <!-- Username Field -->
+    <Label text="Username" style="-fx-font-size: 16px; -fx-text-fill: #555;" />
+    <TextField fx:id="usernameField" promptText="Enter Username" style="-fx-pref-width: 250px; -fx-font-size: 14px;" />
+
+    <!-- Password Field -->
+    <Label text="Password" style="-fx-font-size: 16px; -fx-text-fill: #555;" />
+    <PasswordField fx:id="passwordField" promptText="Enter Password" style="-fx-pref-width: 250px; -fx-font-size: 14px;" />
+
+    <!-- Buttons Section -->
+    <VBox spacing="10">
+        <!-- Login Button -->
+        <Button text="Login" onAction="#handleLogin" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 16px; -fx-pref-width: 150px; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
+
+        <!-- Sign Up Button -->
+        <Button text="Sign Up" onAction="#handleSignup" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-pref-width: 150px; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
+    </VBox>
+</VBox>
+
+</VBox>
+
+
+
+
+<!--&lt;!&ndash;        import org.mindrot.jbcrypt.BCrypt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        private void saveUser(String username, String password) {&ndash;&gt;-->
+<!--&lt;!&ndash;        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());&ndash;&gt;-->
+<!--&lt;!&ndash;        // Save hashedPassword instead of plain password&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->

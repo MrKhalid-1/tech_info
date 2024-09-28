@@ -1,5 +1,6 @@
-package com.example.tech.tech_info;
+package com.example.tech.tech_info.controller.Customer;
 
+import com.example.tech.tech_info.entity.TCustomer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,6 +18,9 @@ public class UpdateCustomerDialogController {
     private TextField mobileField;
 
     @FXML
+    private TextField aadharCardNumberField;
+
+    @FXML
     private TextField paymentField;
 
     @FXML
@@ -26,7 +30,7 @@ public class UpdateCustomerDialogController {
     private Button cancelButton;
 
     private CustomerController mainController;
-    private Customer customer;
+    private TCustomer.Customer customer;
 
     @FXML
     private void initialize() {
@@ -38,11 +42,12 @@ public class UpdateCustomerDialogController {
         this.mainController = mainController;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(TCustomer.Customer customer) {
         this.customer = customer;
         nameField.setText(customer.getName());
         addressField.setText(customer.getAddress());
         mobileField.setText(String.valueOf(customer.getMobile()));
+        aadharCardNumberField.setText(customer.getAadharCardNumber());
         paymentField.setText(String.valueOf(customer.getPayment()));
     }
 
@@ -50,6 +55,7 @@ public class UpdateCustomerDialogController {
             String name = nameField.getText();
             String address = addressField.getText();
             Integer mobile = null;
+            String aadharCardNumber = aadharCardNumberField.getText();
             Double payment = null;
 
             try {
@@ -66,7 +72,7 @@ public class UpdateCustomerDialogController {
             }
 
             // Call the method to update the customer in the database
-            mainController.updateCustomerInDatabase(customer.getId(), name, address, mobile, payment);
+            mainController.updateCustomerInDatabase(customer.getId(), name, address, mobile,aadharCardNumber,payment);
 
             // Close the dialog
             ((Stage) updateButton.getScene().getWindow()).close();

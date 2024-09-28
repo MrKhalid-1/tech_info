@@ -1,9 +1,13 @@
-package com.example.tech.tech_info;
+package com.example.tech.tech_info.controller.Customer;
 
+import com.example.tech.tech_info.controller.TransactionHistory.TransactionHistory;
+import com.example.tech.tech_info.dao.DatabaseConnection;
+import com.example.tech.tech_info.entity.TCustomer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,33 +15,42 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CustomerController {
 
     @FXML
-    private TableView<Customer> tableView;
+    private TableView<TCustomer.Customer> tableView;
 
     @FXML
-    private TableColumn<Customer, Long> idColumn;
+    private TableColumn<TCustomer.Customer, Long> idColumn;
 
     @FXML
-    private TableColumn<Customer, String> nameColumn;
+    private TableColumn<TCustomer.Customer, String> nameColumn;
 
     @FXML
-    private TableColumn<Customer, String> addressColumn;
+    private TableColumn<TCustomer.Customer, String> addressColumn;
 
     @FXML
-    private TableColumn<Customer, String> mobileColumn;
+    private TableColumn<TCustomer.Customer, String> mobileColumn;
 
     @FXML
-    private TableColumn<Customer, Double> paymentColumn;
+    private TableColumn<TCustomer.Customer, String> aadharCardNumberColumn;
+
+    @FXML
+    private TableColumn<TCustomer.Customer, Double> paymentColumn;
 
     @FXML
     private TextField searchField;
 
     @FXML
     private TextField amountField;
+
+    @FXML
+    private TextField commentField;
 
     @FXML
     private Button addCustomerButton;
@@ -54,8 +67,11 @@ public class CustomerController {
     @FXML
     private Button deletePaymentButton;
 
-    private ObservableList<Customer> customerData = FXCollections.observableArrayList();
-    private ObservableList<Customer> filteredData = FXCollections.observableArrayList();
+    @FXML
+    private Button logoutButton;
+
+    private ObservableList<TCustomer.Customer> customerData = FXCollections.observableArrayList();
+    private ObservableList<TCustomer.Customer> filteredData = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -64,6 +80,7 @@ public class CustomerController {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        aadharCardNumberColumn.setCellValueFactory(new PropertyValueFactory<>("aadharCardNumber"));
         paymentColumn.setCellValueFactory(new PropertyValueFactory<>("payment"));
 
         // Load data from the database
@@ -76,11 +93,12 @@ public class CustomerController {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> filterCustomers(newValue));
 
         // Bind button actions
-        addPaymentButton.setOnAction(event -> handleAddPayment());
+        addPaymentButton.setOnAction(event -> openAddPaymentDialog());
         deletePaymentButton.setOnAction(event -> handleDeletePayment());
         addCustomerButton.setOnAction(event -> handleAddCustomer());
         deleteCustomerButton.setOnAction(event -> handleDeleteCustomer());
         updateCustomerButton.setOnAction(event -> handleUpdateCustomer());
+        logoutButton.setOnAction(event -> handleLogout());
     }
 
 
@@ -95,9 +113,10 @@ public class CustomerController {
                 String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
                 Integer mobile = resultSet.getInt("mobile");
+                String aadharCardNumber = resultSet.getString("aadharCardNumber");
                 Double payment = resultSet.getDouble("payment");
 
-                customerData.add(new Customer(id, name, address, mobile, payment));
+                customerData.add(new TCustomer.Customer(id, name, address, mobile, aadharCardNumber, payment));
             }
 
         } catch (SQLException e) {
@@ -110,7 +129,7 @@ public class CustomerController {
             tableView.setItems(customerData);
         } else {
             filteredData.clear();
-            for (Customer customer : customerData) {
+            for (TCustomer.Customer customer : customerData) {
                 if (matchesSearch(customer, keyword)) {
                     filteredData.add(customer);
                 }
@@ -119,7 +138,7 @@ public class CustomerController {
         }
     }
 
-    private boolean matchesSearch(Customer customer, String keyword) {
+    private boolean matchesSearch(TCustomer.Customer customer, String keyword) {
         String lowerCaseKeyword = keyword.toLowerCase();
         return customer.getName().toLowerCase().contains(lowerCaseKeyword)
                 || customer.getAddress().toLowerCase().contains(lowerCaseKeyword)
@@ -127,47 +146,37 @@ public class CustomerController {
     }
 
     @FXML
-    private void handleAddPayment() {
-        Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
-
-        if (selectedCustomer != null) {
-            String amountText = amountField.getText();
-            try {
-                Double paymentAmount = Double.parseDouble(amountText);
-                Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                confirmationAlert.setTitle("Add Payment");
-                confirmationAlert.setHeaderText(null);
-                confirmationAlert.setContentText("Are you sure you want to add " + paymentAmount + " to the payment for customer: " + selectedCustomer.getName() + "?");
-
-                if (confirmationAlert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
-                    addPaymentToDatabase(selectedCustomer.getId(), paymentAmount);
-                    loadCustomerData(); // Refresh the data after adding
-                    amountField.clear(); // Clear the amount field
-                }
-            } catch (NumberFormatException e) {
-                showAlert("Invalid Amount", "Please enter a valid amount.");
-            }
-        } else {
+    private void openAddPaymentDialog() {
+        TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
+        if (selectedCustomer == null) {
             showAlert("No Selection", "Please select a customer to add payment.");
+            return;
         }
-    }
 
-    private void addPaymentToDatabase(Long customerId, Double paymentAmount) {
-        String sql = "UPDATE customers SET payment = payment + ? WHERE id = ?";
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/AddPayment.fxml"));
+            Parent root = loader.load();
 
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setDouble(1, paymentAmount);
-            preparedStatement.setLong(2, customerId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+            // Pass the selected customer to the dialog
+            AddPaymentDialogController dialogController = loader.getController();
+            dialogController.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
+//            selectedCustomer.getId();
+
+            Stage stage = new Stage();
+            stage.setTitle("Add Payment for " + selectedCustomer.getName());
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
             e.printStackTrace();
+            showAlert("Error", "Could not open payment dialog.");
         }
     }
+
 
     @FXML
     private void handleDeletePayment() {
-        Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
+        TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
 
         if (selectedCustomer != null) {
             String amountText = amountField.getText();
@@ -207,7 +216,7 @@ public class CustomerController {
     @FXML
     private void handleAddCustomer() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/AddCustomer.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml"));
             Pane page = loader.load();
 
             Stage dialogStage = new Stage();
@@ -230,7 +239,7 @@ public class CustomerController {
 
     @FXML
     private void handleDeleteCustomer() {
-        Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
+        TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
 
         if (selectedCustomer != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -247,15 +256,16 @@ public class CustomerController {
         }
     }
 
-    public void addCustomerToDatabase(String name, String address,String mobile, Double payment) {
-        String sql = "INSERT INTO customers (name, address, mobile , payment) VALUES (?,?,?, ?)";
+    public void addCustomerToDatabase(String name, String address, String mobile, String aadharCardNumber, Double payment) {
+        String sql = "INSERT INTO customers (name, address, mobile , aadharCardNumber,payment) VALUES (?,?,?,?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, address);
             preparedStatement.setString(3, mobile);
-            preparedStatement.setDouble(4, payment);
+            preparedStatement.setString(4, aadharCardNumber);
+            preparedStatement.setDouble(5, payment);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -281,13 +291,14 @@ public class CustomerController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     @FXML
     private void handleUpdateCustomer() {
-        Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
+        TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
 
         if (selectedCustomer != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/UpdateCustomer.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml"));
                 Pane page = loader.load();
 
                 Stage dialogStage = new Stage();
@@ -312,20 +323,86 @@ public class CustomerController {
         }
     }
 
-    public void updateCustomerInDatabase(Long id, String name, String address,Integer mobile, Double payment) {
-        String sql = "UPDATE customers SET name = ?, address = ?, mobile = ?, payment = ? WHERE id = ?";
+    public void updateCustomerInDatabase(Long id, String name, String address, Integer mobile, String aadharCardNumber, Double payment) {
+        String sql = "UPDATE customers SET name = ?, address = ?, mobile = ?,aadharCardNumber=?, payment = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, address);
             preparedStatement.setInt(3, mobile);
-            preparedStatement.setDouble(4, payment);
-            preparedStatement.setLong(5, id);
+            preparedStatement.setString(4, aadharCardNumber);
+            preparedStatement.setDouble(5, payment);
+            preparedStatement.setLong(6, id);
             preparedStatement.executeUpdate();
             loadCustomerData();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLogout() {
+        // Perform logout logic, such as clearing session data
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Logout");
+//        alert.setHeaderText(null);
+//        alert.setContentText("You want to logged out.");
+
+//        alert.showAndWait();
+
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();  // Close the customer screen
+
+        // Show the login screen
+        showLoginScreen();
+    }
+
+    private void showLoginScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/loginPage/Login.fxml"));
+            Pane loginPage = loader.load();
+
+            Stage loginStage = new Stage();
+            loginStage.setTitle("Login");
+            loginStage.initModality(Modality.WINDOW_MODAL);
+
+            Scene scene = new Scene(loginPage);
+            loginStage.setScene(scene);
+
+            loginStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showHistory() {
+        TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
+        if (selectedCustomer != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml"));
+                Pane page = loader.load();
+
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Transaction History");
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.initOwner(tableView.getScene().getWindow());
+
+                Scene scene = new Scene(page);
+                dialogStage.setScene(scene);
+
+                TransactionHistory controller = loader.getController();
+                controller.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
+                controller.loadTransactionHistory();
+
+                dialogStage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert("No Selection", "Please select a customer to view history.");
         }
     }
 

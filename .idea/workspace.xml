@@ -5,23 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/AddCustomerDialogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/AddPaymentDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/UpdateCustomerDialogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/AddCustomer.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/UpdateCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/loginPage/Login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/loginPage/Signup.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlitTest/customers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/AddCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/AddPaymentDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/Customer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/UpdateCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/AddCustomer.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/Customer.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/UpdateCustomer.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +55,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/mrkhalid-1/tech_info.git&quot;,
-    &quot;accountId&quot;: &quot;c4a03a56-3d44-4df2-b227-41641c84eeea&quot;
+    &quot;accountId&quot;: &quot;995218cd-c390-4eae-a790-22832b4f247d&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -67,27 +74,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DatabaseConnection.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MyApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DatabaseConnection.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.MyApp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info",
+    "last_opened_file_path": "C:/Users/abkha/OneDrive/Desktop/tech_info/src/main/resources/com/example/tech/tech_info/fxml/loginPage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\loginPage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml" />
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\customer" />
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\customer\login" />
+      <recent name="C:\Users\abkha\work\tech_info\src\main\resources\com\example\tech\tech_info" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.tech.tech_info.controller.loginPage" />
+      <recent name="com.example.tech.tech_info" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="CustomerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.CustomerController" />
+      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.controller.Customer.CustomerController" />
       <module name="tech_info" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.tech.tech_info.*" />
+          <option name="PATTERN" value="com.example.tech.tech_info.controller.Customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,11 +125,11 @@
       </method>
     </configuration>
     <configuration name="DatabaseConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.DatabaseConnection" />
+      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.dao.DatabaseConnection" />
       <module name="tech_info" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.tech.tech_info.*" />
+          <option name="PATTERN" value="com.example.tech.tech_info.controller.Customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,7 +142,7 @@
       <module name="tech_info" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.tech.tech_info.*" />
+          <option name="PATTERN" value="com.example.tech.tech_info.controller.Customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -129,6 +158,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -137,7 +174,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725859322497</updated>
+      <workItem from="1726244653318" duration="1065000" />
+      <workItem from="1726284742029" duration="355000" />
+      <workItem from="1726307306580" duration="8000" />
+      <workItem from="1727413072439" duration="2415000" />
+      <workItem from="1727497196358" duration="19949000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
