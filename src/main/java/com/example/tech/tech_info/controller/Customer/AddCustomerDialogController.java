@@ -28,7 +28,6 @@ public class AddCustomerDialogController {
         this.mainController = mainController;
     }
 
-
     @FXML
     private void handleAddCustomer() {
         String name = nameField.getText();
@@ -39,15 +38,18 @@ public class AddCustomerDialogController {
 
         if (name == null || name.trim().isEmpty() ||
                 address == null || address.trim().isEmpty() ||
-                mobileText == null || mobileText.trim().isEmpty() ||
-                aadharCardNumber == null ||  aadharCardNumber.trim().isEmpty() ||
-                paymentText == null || paymentText.trim().isEmpty()) {
-            showAlert("Input Error", "All fields must be filled out.");
+                mobileText == null || mobileText.trim().isEmpty()) {
+            showAlert("Input Error", "Required fields must be filled out.");
             return;
         }
+
+        // Check if paymentText is empty or null, set to 0 if it is
+        if (paymentText == null || paymentText.trim().isEmpty()) {
+            paymentText = "0";  // Set default payment value to 0
+        }
+
         try {
             Double payment = Double.parseDouble(paymentText);
-            // Passing mobileText as String
             mainController.addCustomerToDatabase(name, address, mobileText, aadharCardNumber, payment);
             mainController.loadCustomerData();
             closeDialog();
@@ -59,6 +61,9 @@ public class AddCustomerDialogController {
             alert.showAndWait();
         }
     }
+
+
+
         private void closeDialog() {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();

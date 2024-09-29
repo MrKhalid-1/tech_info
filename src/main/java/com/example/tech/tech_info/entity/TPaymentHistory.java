@@ -1,15 +1,16 @@
 package com.example.tech.tech_info.entity;
 
-public class TPaymentHistory {
+import java.time.LocalDate;
 
+public class TPaymentHistory {
 
     private Long id;
     private Long customerId;
     private String comment;
     private double amount;
-    private String receivedDate;
+    private LocalDate receivedDate;
 
-    public TPaymentHistory(Long id, Long customerId, String comment, double amount, String receivedDate) {
+    public TPaymentHistory(Long id, Long customerId, String comment, double amount, LocalDate receivedDate) {
         this.id = id;
         this.customerId = customerId;
         this.comment = comment;
@@ -17,12 +18,7 @@ public class TPaymentHistory {
         this.receivedDate = receivedDate;
     }
 
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public TPaymentHistory() {
     }
 
     // Getters and setters
@@ -32,6 +28,14 @@ public class TPaymentHistory {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public String getComment() {
@@ -50,11 +54,11 @@ public class TPaymentHistory {
         this.amount = amount;
     }
 
-    public String getReceivedDate() {
+    public LocalDate getReceivedDate() {
         return receivedDate;
     }
 
-    public void setReceivedDate(String receivedDate) {
+    public void setReceivedDate(LocalDate receivedDate) {
         this.receivedDate = receivedDate;
     }
 
@@ -65,7 +69,7 @@ public class TPaymentHistory {
                 ", customerId=" + customerId +
                 ", comment='" + comment + '\'' +
                 ", amount=" + amount +
-                ", receivedDate='" + receivedDate + '\'' +
+                ", receivedDate=" + receivedDate +
                 '}';
     }
 }

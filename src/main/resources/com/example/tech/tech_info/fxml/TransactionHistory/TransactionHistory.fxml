@@ -7,6 +7,7 @@
       fx:controller="com.example.tech.tech_info.controller.TransactionHistory.TransactionHistory">
     <Label text="Payment History"/>
 
+    <!-- Only TableView for displaying transactions -->
     <TableView fx:id="historyTable">
         <columns>
             <TableColumn fx:id="idColumn" text="ID" />
@@ -17,5 +18,4 @@
         </columns>
     </TableView>
 
-    <Button text="Close" onAction="#handleClose" />
 </VBox>

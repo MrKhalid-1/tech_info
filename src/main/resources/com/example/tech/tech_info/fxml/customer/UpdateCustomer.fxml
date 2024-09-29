@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.Customer.UpdateCustomerDialogController"
+      alignment="CENTER" spacing="20.0" prefHeight="450.0" prefWidth="500.0" style="-fx-padding: 30px; -fx-background-color: #F9F9F9;">
+
+    <!-- Title Label -->
+    <Label text="Update Customer" style="-fx-font-size: 20px; -fx-font-weight: bold;" alignment="CENTER"/>
+
+    <!-- Customer Name Field -->
+    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
+        <Label text="Name:"/>
+        <TextField fx:id="nameField" promptText="Enter Customer Name" prefWidth="350.0"/>
+    </VBox>
+
+    <!-- Customer Address Field -->
+    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
+        <Label text="Address:"/>
+        <TextField fx:id="addressField" promptText="Enter Customer Address" prefWidth="350.0"/>
+    </VBox>
+
+    <!-- Customer Mobile Field -->
+    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
+        <Label text="Mobile:"/>
+        <TextField fx:id="mobileField" promptText="Enter Customer Mobile Number" prefWidth="350.0"/>
+    </VBox>
+
+    <!-- Customer Address Field -->
+    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
+        <Label text="AadharCardNumber:"/>
+        <TextField fx:id="aadharCardNumberField" promptText="Enter Customer AadharCardNumber" prefWidth="350.0"/>
+    </VBox>
+
+    <!-- Customer Payment Field -->
+    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
+        <Label text="Payment:"/>
+        <TextField fx:id="paymentField" promptText="Enter Customer Payment" prefWidth="350.0"/>
+    </VBox>
+
+
+
+    <!-- Buttons (Update and Cancel) -->
+    <HBox spacing="15.0" alignment="CENTER" style="-fx-padding: 20px;">
+        <Button fx:id="updateButton" text="Update" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button fx:id="cancelButton" text="Cancel" style="-fx-background-color: #FF5722; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+</VBox>

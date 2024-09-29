@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="500.0" prefWidth="440.0" spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/8.0.171"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.Customer.AddPaymentDialogController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.Customer.DeletePaymentDialogController">
 
-    <Label graphicTextGap="7.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Add New Payment" />
+    <Label graphicTextGap="7.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="delete Payment" />
 
     <HBox spacing="10">
         <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14px; -fx-min-width: 80px;" text="Amount:" />
@@ -27,6 +27,6 @@
 <!--    </HBox>-->
 
 
-    <Button fx:id="addPaymentButton" alignment="CENTER" onAction="#handleAddPayment" style="-fx-font-size: 14px; -fx-pref-width: 150px;" text="Add Payment" />
+    <Button fx:id="deletePaymentButton" alignment="CENTER" onAction="#handledeletePayment" style="-fx-font-size: 14px; -fx-pref-width: 150px;" text="delete Payment" />
 
 </VBox>

@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class CustomerController {
 
@@ -50,9 +48,6 @@ public class CustomerController {
     private TextField amountField;
 
     @FXML
-    private TextField commentField;
-
-    @FXML
     private Button addCustomerButton;
 
     @FXML
@@ -69,6 +64,9 @@ public class CustomerController {
 
     @FXML
     private Button logoutButton;
+
+    @FXML
+    private Button transactionButton;
 
     private ObservableList<TCustomer.Customer> customerData = FXCollections.observableArrayList();
     private ObservableList<TCustomer.Customer> filteredData = FXCollections.observableArrayList();
@@ -94,11 +92,12 @@ public class CustomerController {
 
         // Bind button actions
         addPaymentButton.setOnAction(event -> openAddPaymentDialog());
-        deletePaymentButton.setOnAction(event -> handleDeletePayment());
+        deletePaymentButton.setOnAction(event -> openDeletePayment());
         addCustomerButton.setOnAction(event -> handleAddCustomer());
         deleteCustomerButton.setOnAction(event -> handleDeleteCustomer());
         updateCustomerButton.setOnAction(event -> handleUpdateCustomer());
         logoutButton.setOnAction(event -> handleLogout());
+        transactionButton.setOnAction(event -> handleTransaction());
     }
 
 
@@ -167,49 +166,35 @@ public class CustomerController {
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+            loadCustomerData();
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "Could not open payment dialog.");
         }
     }
 
-
     @FXML
-    private void handleDeletePayment() {
+    private void openDeletePayment() {
         TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
-
-        if (selectedCustomer != null) {
-            String amountText = amountField.getText();
-            try {
-                Double paymentAmount = Double.parseDouble(amountText);
-                Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                confirmationAlert.setTitle("Delete Payment");
-                confirmationAlert.setHeaderText(null);
-                confirmationAlert.setContentText("Are you sure you want to delete " + paymentAmount + " from the payment for customer: " + selectedCustomer.getName() + "?");
-
-                if (confirmationAlert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
-                    deletePaymentFromDatabase(selectedCustomer.getId(), paymentAmount);
-                    loadCustomerData(); // Refresh the data after deletion
-                    amountField.clear();
-                }
-            } catch (NumberFormatException e) {
-                showAlert("Invalid Amount", "Please enter a valid amount.");
-            }
-        } else {
-            showAlert("No Selection", "Please select a customer to delete payment.");
+        if (selectedCustomer == null) {
+            showAlert("No Selection", "Please select a customer to add payment.");
+            return;
         }
-    }
 
-    private void deletePaymentFromDatabase(Long customerId, Double paymentAmount) {
-        String sql = "UPDATE customers SET payment = payment - ? WHERE id = ?";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setDouble(1, paymentAmount);
-            preparedStatement.setLong(2, customerId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml"));
+            Parent root = loader.load();
+            DeletePaymentDialogController dialogController = loader.getController();
+            dialogController.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
+            Stage stage = new Stage();
+            stage.setTitle("Delete Payment for " + selectedCustomer.getName());
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            loadCustomerData();
+        } catch (IOException e) {
             e.printStackTrace();
+            showAlert("Error", "Could not open payment dialog.");
         }
     }
 
@@ -284,13 +269,7 @@ public class CustomerController {
         }
     }
 
-    void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
+
 
     @FXML
     private void handleUpdateCustomer() {
@@ -377,7 +356,7 @@ public class CustomerController {
     }
 
     @FXML
-    private void showHistory() {
+    private void handleTransaction() {
         TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
         if (selectedCustomer != null) {
             try {
@@ -392,9 +371,10 @@ public class CustomerController {
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
 
+                // Get the controller and pass the customerId
                 TransactionHistory controller = loader.getController();
-                controller.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
-                controller.loadTransactionHistory();
+                controller.setCustomerId(Math.toIntExact(selectedCustomer.getId())); // Fix here
+                controller.loadTransactionHistory(); // Load transaction history based on customerId
 
                 dialogStage.showAndWait();
 
@@ -406,4 +386,27 @@ public class CustomerController {
         }
     }
 
+
+    void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+    private boolean showConfirmationAlert(String title, String message) {
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle(title);
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText(message);
+        return confirmationAlert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
+    }
+
+    private void showAlertPayment(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
