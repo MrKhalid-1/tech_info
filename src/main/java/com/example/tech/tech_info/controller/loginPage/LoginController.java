@@ -1,5 +1,7 @@
 package com.example.tech.tech_info.controller.loginPage;
 
+import com.example.tech.tech_info.SceneSwitcher;
+import com.example.tech.tech_info.dao.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,11 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import com.example.tech.tech_info.SceneSwitcher;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -31,12 +31,11 @@ public class LoginController {
 
         if (validateUser(username, password)) {
             System.out.println("Login successful");
-            // Redirect to the customer management screen
             Stage stage = (Stage) usernameField.getScene().getWindow();
             SceneSwitcher.switchTo(stage, "/com/example/tech/tech_info/fxml/customer/Customer.fxml");
         } else {
             System.out.println("Invalid username or password");
-            showErrorLogin("Invalid credentials!"); // Show error message
+            showErrorLogin("Invalid credentials!");
         }
     }
 
@@ -44,7 +43,6 @@ public class LoginController {
     private void handleSignup() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/loginPage/Signup.fxml"));
-//            C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\customer\Customer.fxml
             Parent signupView = loader.load();
             Stage currentStage = (Stage) usernameField.getScene().getWindow();
             Scene scene = new Scene(signupView);
@@ -57,11 +55,9 @@ public class LoginController {
         }
     }
 
-
     private boolean validateUser(String username, String password) {
         boolean isValid = false;
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sqliteTest/management.db")) {
-
+        try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
@@ -77,7 +73,6 @@ public class LoginController {
 
 
     private void showErrorLogin(String message) {
-        // Display error message to the user, e.g., using an alert
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
         alert.setHeaderText(null);
@@ -85,19 +80,10 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    // Utility methods to show alerts
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    private void showInfo(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
 }

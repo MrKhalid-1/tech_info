@@ -71,10 +71,7 @@ public class UpdateCustomerDialogController {
                 return;
             }
 
-            // Call the method to update the customer in the database
             mainController.updateCustomerInDatabase(customer.getId(), name, address, mobile,aadharCardNumber,payment);
-
-            // Close the dialog
             ((Stage) updateButton.getScene().getWindow()).close();
         }
     }

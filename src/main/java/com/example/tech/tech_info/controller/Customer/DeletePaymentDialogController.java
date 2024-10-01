@@ -1,12 +1,8 @@
 package com.example.tech.tech_info.controller.Customer;
 
-import com.example.tech.tech_info.entity.TCustomer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,10 +20,6 @@ public class DeletePaymentDialogController {
     @FXML
     private TextField commentField;
 
-    @FXML
-    private TableView<TCustomer.Customer> customerTable;
-
-    private ObservableList<TCustomer.Customer> customerData = FXCollections.observableArrayList();
     private int customerId;
 
     public void setCustomerId(int customerId) {
@@ -42,7 +34,7 @@ public class DeletePaymentDialogController {
             pstmt.setInt(2, customerId);
             int rowsUpdated = pstmt.executeUpdate();
             System.out.println(rowsUpdated);
-            System.out.println(customerId + " "+ paymentAmount);
+            System.out.println(customerId + " " + paymentAmount);
             conn.commit();
             if (rowsUpdated > 0) {
                 System.out.println("Payment deleted successfully.");
@@ -61,7 +53,7 @@ public class DeletePaymentDialogController {
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, customerId);
             pstmt.setString(2, comment);
-            pstmt.setDouble(3, - paymentAmount);
+            pstmt.setDouble(3, -paymentAmount);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             showAlert("Database Error", "Unable to record payment history. Please try again.");

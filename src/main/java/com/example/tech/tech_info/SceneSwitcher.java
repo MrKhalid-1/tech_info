@@ -13,6 +13,7 @@ public class SceneSwitcher {
             FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(fxmlPath));
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
+            stage.setFullScreen(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

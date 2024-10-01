@@ -1,13 +1,17 @@
 package com.example.tech.tech_info.controller.loginPage;
 
 import com.example.tech.tech_info.SceneSwitcher;
+import com.example.tech.tech_info.dao.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SignupController {
 
@@ -21,21 +25,20 @@ public class SignupController {
         String username = signupUsernameField.getText();
         String password = signupPasswordField.getText();
 
-        // Check if user already exists
         if (!isUserRegistered()) {
             saveUser(username, password);
             System.out.println("User created successfully!");
-            switchToLoginScreen(); // Switch to login screen after success
+            switchToLoginScreen();
         } else {
             System.out.println("User already exists! Only one user is allowed.");
             showError("User already exists! Only one user is allowed.");
-            switchToLoginScreen(); // Switch to login screen after success
+            switchToLoginScreen();
         }
     }
 
     private boolean isUserRegistered() {
         boolean exists = false;
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sqliteTest/management.db")) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "SELECT COUNT(*) FROM user";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -48,7 +51,7 @@ public class SignupController {
     }
 
     private void saveUser(String username, String password) {
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sqliteTest/management.db")) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "INSERT INTO user (username, password) VALUES (?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
@@ -68,7 +71,7 @@ public class SignupController {
     }
 
     private void switchToLoginScreen() {
-        Stage stage = (Stage) signupUsernameField.getScene().getWindow(); // Get current window (stage)
-        SceneSwitcher.switchTo(stage, "/com/example/tech/tech_info/fxml/loginPage/Login.fxml") ;// Switch to login.fxml
+        Stage stage = (Stage) signupUsernameField.getScene().getWindow();
+        SceneSwitcher.switchTo(stage, "/com/example/tech/tech_info/fxml/loginPage/Login.fxml");
     }
 }

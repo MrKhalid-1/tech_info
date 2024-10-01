@@ -6,11 +6,11 @@ public class TCustomer {
         private Long id;
         private String name;
         private String address;
-        private Integer mobile;
+        private String mobile;
         private String aadharCardNumber;
         private Double payment;
 
-        public Customer(Long id, String name, String address, Integer mobile, String aadharCardNumber, Double payment) {
+        public Customer(Long id, String name, String address, String mobile, String aadharCardNumber, Double payment) {
             this.id = id;
             this.name = name;
             this.address = address;
@@ -51,11 +51,11 @@ public class TCustomer {
             this.address = address;
         }
 
-        public Integer getMobile() {
+        public String getMobile() {
             return mobile;
         }
 
-        public void setMobile(Integer mobile) {
+        public void setMobile(String mobile) {
             this.mobile = mobile;
         }
 

@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="tech_info:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="make login and history tables and impliment uses">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml" afterDir="false" />
+    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="all function work for user and customers">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/tech_info_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqliteTest/management.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TCustomer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,43 +71,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DatabaseConnection.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.MyApp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info",
-    "last_opened_file_path": "C:/Users/abkha/work/inventure_web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DatabaseConnection.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abkha/OneDrive/Desktop/tech_info&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\loginPage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources" />
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info" />
+      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\sqlite" />
       <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml" />
       <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\customer" />
-      <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\customer\login" />
-      <recent name="C:\Users\abkha\work\tech_info\src\main\resources\com\example\tech\tech_info" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.tech.tech_info.controller.loginPage" />
       <recent name="com.example.tech.tech_info" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager">
     <configuration name="CustomerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.controller.Customer.CustomerController" />
       <module name="tech_info" />
@@ -125,12 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.HelloApplication" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.Main" />
       <module name="tech_info" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.tech.tech_info.controller.Customer.*" />
+          <option name="PATTERN" value="com.example.tech.tech_info.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,8 +154,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.DatabaseConnection" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.CustomerController" />
       </list>
     </recent_temporary>
@@ -167,7 +181,13 @@
       <workItem from="1726307306580" duration="8000" />
       <workItem from="1727413072439" duration="2415000" />
       <workItem from="1727497196358" duration="20306000" />
-      <workItem from="1727539985234" duration="14228000" />
+      <workItem from="1727539985234" duration="21101000" />
+      <workItem from="1727670687109" duration="9000" />
+      <workItem from="1727678683364" duration="4497000" />
+      <workItem from="1727711874280" duration="9000" />
+      <workItem from="1727755434069" duration="2681000" />
+      <workItem from="1727776481652" duration="12000" />
+      <workItem from="1727784583358" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="make login and history tables and impliment uses">
       <option name="closed" value="true" />
@@ -177,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727538303501</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="all function work for user and customers">
+      <option name="closed" value="true" />
+      <created>1727590284090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727590284090</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +213,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="make login and history tables and impliment uses" />
-    <option name="LAST_COMMIT_MESSAGE" value="make login and history tables and impliment uses" />
+    <MESSAGE value="all function work for user and customers" />
+    <option name="LAST_COMMIT_MESSAGE" value="all function work for user and customers" />
   </component>
 </project>

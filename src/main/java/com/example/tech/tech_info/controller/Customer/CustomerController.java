@@ -45,9 +45,6 @@ public class CustomerController {
     private TextField searchField;
 
     @FXML
-    private TextField amountField;
-
-    @FXML
     private Button addCustomerButton;
 
     @FXML
@@ -73,24 +70,15 @@ public class CustomerController {
 
     @FXML
     public void initialize() {
-        // Set up the columns in the TableView
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
         aadharCardNumberColumn.setCellValueFactory(new PropertyValueFactory<>("aadharCardNumber"));
         paymentColumn.setCellValueFactory(new PropertyValueFactory<>("payment"));
-
-        // Load data from the database
         loadCustomerData();
-
-        // Initially set the full customer list to the table
         tableView.setItems(customerData);
-
-        // Add listener for search functionality
         searchField.textProperty().addListener((observable, oldValue, newValue) -> filterCustomers(newValue));
-
-        // Bind button actions
         addPaymentButton.setOnAction(event -> openAddPaymentDialog());
         deletePaymentButton.setOnAction(event -> openDeletePayment());
         addCustomerButton.setOnAction(event -> handleAddCustomer());
@@ -111,7 +99,7 @@ public class CustomerController {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
-                Integer mobile = resultSet.getInt("mobile");
+                String mobile = resultSet.getString("mobile");
                 String aadharCardNumber = resultSet.getString("aadharCardNumber");
                 Double payment = resultSet.getDouble("payment");
 
@@ -156,10 +144,8 @@ public class CustomerController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/AddPayment.fxml"));
             Parent root = loader.load();
 
-            // Pass the selected customer to the dialog
             AddPaymentDialogController dialogController = loader.getController();
             dialogController.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
-//            selectedCustomer.getId();
 
             Stage stage = new Stage();
             stage.setTitle("Add Payment for " + selectedCustomer.getName());
@@ -270,7 +256,6 @@ public class CustomerController {
     }
 
 
-
     @FXML
     private void handleUpdateCustomer() {
         TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
@@ -322,18 +307,11 @@ public class CustomerController {
 
     @FXML
     public void handleLogout() {
-        // Perform logout logic, such as clearing session data
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Logout");
-//        alert.setHeaderText(null);
-//        alert.setContentText("You want to logged out.");
-
-//        alert.showAndWait();
 
         Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();  // Close the customer screen
-
-        // Show the login screen
+        stage.close();
         showLoginScreen();
     }
 
@@ -371,7 +349,6 @@ public class CustomerController {
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
 
-                // Get the controller and pass the customerId
                 TransactionHistory controller = loader.getController();
                 controller.setCustomerId(Math.toIntExact(selectedCustomer.getId())); // Fix here
                 controller.loadTransactionHistory(); // Load transaction history based on customerId
@@ -386,27 +363,11 @@ public class CustomerController {
         }
     }
 
-
     void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-        alert.showAndWait();
-    }
-    private boolean showConfirmationAlert(String title, String message) {
-        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle(title);
-        confirmationAlert.setHeaderText(null);
-        confirmationAlert.setContentText(message);
-        return confirmationAlert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
-    }
-
-    private void showAlertPayment(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
         alert.showAndWait();
     }
 }

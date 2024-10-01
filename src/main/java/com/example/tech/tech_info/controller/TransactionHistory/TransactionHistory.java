@@ -1,5 +1,6 @@
 package com.example.tech.tech_info.controller.TransactionHistory;
 
+import com.example.tech.tech_info.dao.DatabaseConnection;
 import com.example.tech.tech_info.entity.TPaymentHistory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -7,7 +8,10 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -38,7 +42,6 @@ public class TransactionHistory {
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         receivedDateColumn.setCellValueFactory(new PropertyValueFactory<>("receivedDate"));
 
-        // Customizing the row factory for hover effects
         historyTable.setRowFactory(tv -> new TableRow<TPaymentHistory>() {
             @Override
             protected void updateItem(TPaymentHistory item, boolean empty) {
@@ -46,8 +49,8 @@ public class TransactionHistory {
                 if (empty || item == null) {
                     setStyle(""); // Clear style if the row is empty
                 } else {
-                    setOnMouseEntered(event -> setStyle("-fx-background-color: #e9ecef;")); // Hover effect
-                    setOnMouseExited(event -> setStyle("")); // Remove hover effect
+                    setOnMouseEntered(event -> setStyle("-fx-background-color: #e9ecef;"));
+                    setOnMouseExited(event -> setStyle(""));
                 }
             }
         });
@@ -61,37 +64,38 @@ public class TransactionHistory {
         historyTable.getItems().clear(); // Clear existing items
         String query = "SELECT * FROM historyPayment WHERE customerId = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sqliteTest/management.db");
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+//        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:src/main/resources/sqlite/management.db");
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)){
 
-            stmt.setInt(1, customerId);
-            ResultSet rs = stmt.executeQuery();
+                stmt.setInt(1, customerId);
+                ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                LocalDate receivedDate = null;
-                String receivedDateString = rs.getString("received_date"); // Read as String
-                if (receivedDateString != null && !receivedDateString.isEmpty()) {
-                    try {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                        receivedDate = LocalDate.parse(receivedDateString, formatter); // Manually parse to LocalDate
-                    } catch (DateTimeParseException e) {
-                        e.printStackTrace();
+                while (rs.next()) {
+                    LocalDate receivedDate = null;
+                    String receivedDateString = rs.getString("received_date");
+                    if (receivedDateString != null && !receivedDateString.isEmpty()) {
+                        try {
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            receivedDate = LocalDate.parse(receivedDateString, formatter);
+                        } catch (DateTimeParseException e) {
+                            e.printStackTrace();
+                        }
                     }
+
+                    TPaymentHistory historyPayment = new TPaymentHistory(
+                            rs.getLong("id"),
+                            rs.getLong("customerId"),
+                            rs.getString("comment"),
+                            rs.getDouble("amount"),
+                            receivedDate
+                    );
+
+                    historyTable.getItems().add(historyPayment);
                 }
 
-                TPaymentHistory historyPayment = new TPaymentHistory(
-                        rs.getLong("id"),
-                        rs.getLong("customerId"),
-                        rs.getString("comment"),
-                        rs.getDouble("amount"),
-                        receivedDate
-                );
-
-                historyTable.getItems().add(historyPayment);
+            } catch(SQLException e){
+                e.printStackTrace();
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
-}

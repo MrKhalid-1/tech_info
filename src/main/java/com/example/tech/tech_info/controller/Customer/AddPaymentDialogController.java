@@ -1,6 +1,5 @@
 package com.example.tech.tech_info.controller.Customer;
 
-import com.example.tech.tech_info.dao.DatabaseConnection;
 import com.example.tech.tech_info.entity.TCustomer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static com.example.tech.tech_info.dao.DatabaseConnection.getConnection;
 
@@ -23,11 +24,7 @@ public class AddPaymentDialogController {
     @FXML
     private TextField commentField;
 
-    @FXML
-    private TableView<TCustomer.Customer> customerTable;
-
-    private ObservableList<TCustomer.Customer> customerData = FXCollections.observableArrayList();
-    private int customerId; // Set this from the parent controller
+    private int customerId;
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
@@ -40,8 +37,6 @@ public class AddPaymentDialogController {
             pstmt.setDouble(1, paymentAmount);
             pstmt.setInt(2, customerId);
             int rowsUpdated = pstmt.executeUpdate();
-            System.out.println(rowsUpdated);
-            System.out.println(customerId+"p  "+paymentAmount);
             conn.commit();
             if (rowsUpdated > 0) {
                 System.out.println("Payment updated successfully.");
@@ -50,10 +45,9 @@ public class AddPaymentDialogController {
             }
         } catch (SQLException e) {
             showAlert("Database Error", "Unable to update payment. Please try again.");
-            e.printStackTrace(); // Log the exception
+            e.printStackTrace();
         }
     }
-
 
     public void addPaymentToHistory(int customerId, String comment, double paymentAmount) {
         String sql = "INSERT INTO historyPayment (customerId, comment, amount) VALUES (?, ?, ?)";
@@ -64,7 +58,7 @@ public class AddPaymentDialogController {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             showAlert("Database Error", "Unable to record payment history. Please try again.");
-            e.printStackTrace(); // Log the exception
+            e.printStackTrace();
         }
     }
 
@@ -89,13 +83,8 @@ public class AddPaymentDialogController {
             if (showConfirmationAlert("Add Payment", "Are you sure you want to add " + paymentAmount + " as a payment?")) {
                 updateCustomerPayment(customerId, paymentAmount);
                 addPaymentToHistory(customerId, commentText, paymentAmount);
-//                showAlert("Payment Added", "Payment of " + paymentAmount + " added successfully.");
                 Stage stage = (Stage) amountField.getScene().getWindow();
                 stage.close();
-
-                 // Refresh the data after deletion
-                // Notify or trigger the parent controller (Customer.fxml) to update payment information
-//                returnToCustomerView();
             }
         } catch (NumberFormatException e) {
             showAlert("Invalid Amount", "Please enter a valid numeric amount.");

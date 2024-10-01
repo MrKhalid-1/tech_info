@@ -43,7 +43,6 @@ public class AddCustomerDialogController {
             return;
         }
 
-        // Check if paymentText is empty or null, set to 0 if it is
         if (paymentText == null || paymentText.trim().isEmpty()) {
             paymentText = "0";  // Set default payment value to 0
         }
@@ -62,9 +61,7 @@ public class AddCustomerDialogController {
         }
     }
 
-
-
-        private void closeDialog() {
+    private void closeDialog() {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }

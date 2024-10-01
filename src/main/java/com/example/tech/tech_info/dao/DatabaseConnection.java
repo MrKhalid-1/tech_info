@@ -3,12 +3,22 @@ package com.example.tech.tech_info.dao;
 import java.sql.*;
 
 public class DatabaseConnection {
-//    private static final String URL = "jdbc:sqlite:sqlitTest/customers";
-    private static final String URL = "jdbc:sqlite:sqliteTest/management.db";
+    private static final String URL = "jdbc:sqlite:src/main/resources/sqlite/management.db";
+    private Connection connection;
 
     public static Connection getConnection() throws SQLException {
-        System.out.println("Connecting to database at: " + URL);
         return DriverManager.getConnection(URL);
+    }
+
+    public Connection connect() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL);
+            }
+        } catch (SQLException e) {
+            System.err.println("Database connection failed: " + e.getMessage());
+        }
+        return connection;
     }
 
     public static void main(String[] args) {
@@ -20,7 +30,7 @@ public class DatabaseConnection {
                 String Id = resultSet.getString("id");
                 String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
-                Integer mobile = resultSet.getInt("mobile");
+                String mobile = resultSet.getString("mobile");
                 String aadharCardNumber = resultSet.getString("aadharCardNumber");
                 Double payment = resultSet.getDouble("payment");
                 System.out.println("Id: " + Id);
@@ -64,7 +74,7 @@ public class DatabaseConnection {
                         + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "name TEXT NOT NULL, "
                         + "address TEXT, "
-                        + "mobile INTEGER NOT NULL UNIQUE, "
+                        + "mobile TEXT NOT NULL UNIQUE, "
                         + "aadharCardNumber TEXT(12), "
                         + "payment REAL);");
 
