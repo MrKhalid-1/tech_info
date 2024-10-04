@@ -20,8 +20,8 @@ public class UpdateCustomerDialogController {
     @FXML
     private TextField aadharCardNumberField;
 
-    @FXML
-    private TextField paymentField;
+//    @FXML
+//    private TextField paymentField;
 
     @FXML
     private Button updateButton;
@@ -46,32 +46,31 @@ public class UpdateCustomerDialogController {
         this.customer = customer;
         nameField.setText(customer.getName());
         addressField.setText(customer.getAddress());
-        mobileField.setText(String.valueOf(customer.getMobile()));
+        mobileField.setText(customer.getMobile());
         aadharCardNumberField.setText(customer.getAadharCardNumber());
-        paymentField.setText(String.valueOf(customer.getPayment()));
+//        paymentField.setText(String.valueOf(customer.getPayment()));
     }
 
         private void handleUpdate () {
             String name = nameField.getText();
             String address = addressField.getText();
-            Integer mobile = null;
+            String mobile = mobileField.getText();
             String aadharCardNumber = aadharCardNumberField.getText();
             Double payment = null;
 
-            try {
-                mobile = Integer.parseInt(mobileField.getText());
-                payment = Double.parseDouble(paymentField.getText());
-            } catch (NumberFormatException e) {
-                mainController.showAlert("Invalid Input", "Please enter valid numbers for mobile and payment.");
-                return;
-            }
+//            try {
+//                payment = Double.parseDouble(paymentField.getText());
+//            } catch (NumberFormatException e) {
+//                mainController.showAlert("Invalid Input", "Please enter valid numbers for mobile and payment.");
+//                return;
+//            }
 
-            if (name.isEmpty() || address.isEmpty() || mobileField.getText().isEmpty()) {
+            if (name.isEmpty() || address.isEmpty() || mobile.isEmpty()) {
                 mainController.showAlert("Missing Information", "Please fill in all fields.");
                 return;
             }
 
-            mainController.updateCustomerInDatabase(customer.getId(), name, address, mobile,aadharCardNumber,payment);
+            mainController.updateCustomerInDatabase(customer.getId(), name, address,mobile,aadharCardNumber,customer.getPayment());
             ((Stage) updateButton.getScene().getWindow()).close();
         }
     }

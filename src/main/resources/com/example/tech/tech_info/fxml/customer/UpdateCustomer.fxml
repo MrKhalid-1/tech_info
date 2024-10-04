@@ -23,23 +23,20 @@
         <TextField fx:id="addressField" promptText="Enter Customer Address" prefWidth="350.0"/>
     </VBox>
 
-    <!-- Customer Mobile Field -->
     <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
         <Label text="Mobile:"/>
         <TextField fx:id="mobileField" promptText="Enter Customer Mobile Number" prefWidth="350.0"/>
     </VBox>
 
-    <!-- Customer Address Field -->
     <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
         <Label text="AadharCardNumber:"/>
         <TextField fx:id="aadharCardNumberField" promptText="Enter Customer AadharCardNumber" prefWidth="350.0"/>
     </VBox>
 
-    <!-- Customer Payment Field -->
-    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">
-        <Label text="Payment:"/>
-        <TextField fx:id="paymentField" promptText="Enter Customer Payment" prefWidth="350.0"/>
-    </VBox>
+<!--    <VBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 20px;">-->
+<!--        <Label text="Payment:"/>-->
+<!--        <TextField fx:id="paymentField" promptText="Enter Customer Payment" prefWidth="350.0"/>-->
+<!--    </VBox>-->
 
 
 

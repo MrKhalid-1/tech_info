@@ -9,23 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="all function work for user and customers">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/tech_info_jar.xml" afterDir="false" />
+    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="fix db and its work fine in jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqliteTest/management.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/Customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/Customer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +67,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.DatabaseConnection.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DatabaseConnection.executor&quot;: &quot;Debug&quot;,
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.MyApp.executor&quot;: &quot;Run&quot;,
@@ -112,7 +106,7 @@
       <recent name="com.example.tech.tech_info" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.CustomerController">
     <configuration name="CustomerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.controller.Customer.CustomerController" />
       <module name="tech_info" />
@@ -187,7 +181,11 @@
       <workItem from="1727711874280" duration="9000" />
       <workItem from="1727755434069" duration="2681000" />
       <workItem from="1727776481652" duration="12000" />
-      <workItem from="1727784583358" duration="1800000" />
+      <workItem from="1727784583358" duration="3198000" />
+      <workItem from="1727799535223" duration="16000" />
+      <workItem from="1727842007149" duration="9000" />
+      <workItem from="1728019237187" duration="2832000" />
+      <workItem from="1728036178484" duration="605000" />
     </task>
     <task id="LOCAL-00001" summary="make login and history tables and impliment uses">
       <option name="closed" value="true" />
@@ -205,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727590284090</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix db and its work fine in jar">
+      <option name="closed" value="true" />
+      <created>1727786633151</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727786633151</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +220,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="make login and history tables and impliment uses" />
     <MESSAGE value="all function work for user and customers" />
-    <option name="LAST_COMMIT_MESSAGE" value="all function work for user and customers" />
+    <MESSAGE value="fix db and its work fine in jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix db and its work fine in jar" />
   </component>
 </project>

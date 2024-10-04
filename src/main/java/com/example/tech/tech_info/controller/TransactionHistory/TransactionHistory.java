@@ -64,7 +64,6 @@ public class TransactionHistory {
         historyTable.getItems().clear(); // Clear existing items
         String query = "SELECT * FROM historyPayment WHERE customerId = ?";
 
-//        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:src/main/resources/sqlite/management.db");
         try (Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)){
 

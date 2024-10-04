@@ -287,14 +287,14 @@ public class CustomerController {
         }
     }
 
-    public void updateCustomerInDatabase(Long id, String name, String address, Integer mobile, String aadharCardNumber, Double payment) {
+    public void updateCustomerInDatabase(Long id, String name, String address, String mobile, String aadharCardNumber, Double payment) {
         String sql = "UPDATE customers SET name = ?, address = ?, mobile = ?,aadharCardNumber=?, payment = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, address);
-            preparedStatement.setInt(3, mobile);
+            preparedStatement.setString(3, mobile);
             preparedStatement.setString(4, aadharCardNumber);
             preparedStatement.setDouble(5, payment);
             preparedStatement.setLong(6, id);

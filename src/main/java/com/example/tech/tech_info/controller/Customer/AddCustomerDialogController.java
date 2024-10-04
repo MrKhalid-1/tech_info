@@ -19,8 +19,8 @@ public class AddCustomerDialogController {
     @FXML
     private TextField aadharCardNumberField;
 
-    @FXML
-    private TextField paymentField;
+//    @FXML
+//    private TextField paymentField;
 
     private CustomerController mainController;
 
@@ -34,7 +34,7 @@ public class AddCustomerDialogController {
         String address = addressField.getText();
         String mobileText = mobileField.getText();
         String aadharCardNumber = aadharCardNumberField.getText();
-        String paymentText = paymentField.getText();
+//        String paymentText = paymentField.getText();
 
         if (name == null || name.trim().isEmpty() ||
                 address == null || address.trim().isEmpty() ||
@@ -43,12 +43,13 @@ public class AddCustomerDialogController {
             return;
         }
 
-        if (paymentText == null || paymentText.trim().isEmpty()) {
-            paymentText = "0";  // Set default payment value to 0
-        }
+//        if (paymentText == null || paymentText.trim().isEmpty()) {
+//            paymentText = "0";
+//        }
 
         try {
-            Double payment = Double.parseDouble(paymentText);
+//            Double payment = Double.parseDouble(paymentText);
+            Double payment = 0.0 ;
             mainController.addCustomerToDatabase(name, address, mobileText, aadharCardNumber, payment);
             mainController.loadCustomerData();
             closeDialog();

@@ -5,11 +5,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1527.0" style="-fx-padding: 20px; -fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.Customer.CustomerController">
 
-    <!-- TableView -->
     <TableView fx:id="tableView" layoutX="33.0" layoutY="94.0" prefHeight="656.0" prefWidth="1118.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1px;">
         <columns>
             <TableColumn fx:id="idColumn" minWidth="52.0" prefWidth="52.0" sortType="DESCENDING" style="-fx-font-weight: bold;" text="ID" />
@@ -21,28 +23,23 @@
         </columns>
     </TableView>
 
-    <!-- Search Field -->
     <Label layoutY="35.0" prefHeight="35.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Search Customer" />
     <TextField fx:id="searchField" layoutX="170.0" layoutY="39.0" prefHeight="28.0" prefWidth="700.0" promptText="Keywords..." style="-fx-padding: 5px; -fx-border-color: #ddd; -fx-border-radius: 5px;" />
 
-    <!-- Amount Field -->
-<!--    <Label layoutX="1241.0" layoutY="401.0" prefHeight="29.0" prefWidth="91.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Amount:" />-->
-<!--    <TextField fx:id="amountField" layoutX="1241.0" layoutY="446.0" prefHeight="39.0" prefWidth="184.0" promptText="Enter amount" style="-fx-padding: 5px; -fx-border-color: #ddd; -fx-border-radius: 5px;" />-->
-
     <!-- Buttons -->
-    <Button fx:id="addCustomerButton" layoutX="1293.0" layoutY="140.0" prefHeight="39.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #4caf50; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Add Customer" />
-    <Button fx:id="deleteCustomerButton" layoutX="1293.0" layoutY="215.0" prefHeight="39.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Delete Customer" />
-    <Button fx:id="updateCustomerButton" layoutX="1293.0" layoutY="291.0" prefHeight="39.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-background-color: #e12336; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Update Customer" />
-    <Button fx:id="addPaymentButton" layoutX="1166.0" layoutY="525.0" prefHeight="41.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #2196f3; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Add Payment" />
-    <Button fx:id="deletePaymentButton" layoutX="1338.0" layoutY="526.0" prefHeight="35.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #a14336; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Delete Payment" />
-
-    <Button fx:id="logoutButton" layoutX="1293.0" layoutY="600.0" prefHeight="39.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-background-color: #ff5722; -fx-text-fill:
-    white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Logout" onAction="#handleLogout" />
-
-    <Button fx:id="transactionButton" layoutX="1293.0" layoutY="360.0" prefHeight="39.0" prefWidth="150.0"
-            style="-fx-font-size: 14px; -fx-background-color: #ffa726; -fx-font-weight: bold; -fx-text-fill: white;
-        -fx-padding: 10px; -fx-border-radius: 5px;"
-            text="view Transaction" onAction="#handleTransaction"/>
-
-
+    <GridPane alignment="CENTER" hgap="10" style="-fx-padding: 20;" vgap="10">
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+     <Button fx:id="transactionButton" layoutX="1254.0" layoutY="392.0" style="-fx-font-size: 14px; -fx-background-color: #ffa726; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="View Transaction" />
+     <Button fx:id="deletePaymentButton" layoutX="1154.0" layoutY="301.0" style="-fx-font-size: 14px; -fx-background-color: #a14336; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Delete Payment" />
+     <Button fx:id="addPaymentButton" layoutX="1151.0" layoutY="231.0" style="-fx-font-size: 14px; -fx-background-color: #2196f3; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Add Payment" />
+     <Button fx:id="updateCustomerButton" layoutX="1357.0" layoutY="301.0" style="-fx-font-size: 14px; -fx-background-color: #e12336; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Update Customer" />
+     <Button fx:id="deleteCustomerButton" layoutX="1372.0" layoutY="668.0" style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Delete Customer" />
+     <Button fx:id="addCustomerButton" layoutX="1360.0" layoutY="231.0" style="-fx-font-size: 14px; -fx-background-color: #4caf50; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Add Customer" />
+     <Button fx:id="logoutButton" layoutX="1154.0" layoutY="668.0" onAction="#handleLogout" style="-fx-font-size: 14px; -fx-background-color: #ff5722; -fx-text-fill: white; -fx-padding: 10px; -fx-border-radius: 5px;" text="Logout" />
 </Pane>

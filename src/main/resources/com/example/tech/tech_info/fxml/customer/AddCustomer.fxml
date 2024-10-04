@@ -31,10 +31,10 @@
         <TextField fx:id="aadharCardNumberField" promptText="Enter customer aadharCardNumber" style="-fx-pref-width: 250px;" />
     </HBox>
 
-    <HBox spacing="10">
-        <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14px; -fx-min-width: 80px;" text="Payment:" />
-        <TextField fx:id="paymentField" promptText="Enter payment amount" style="-fx-pref-width: 250px;" />
-    </HBox>
+<!--    <HBox spacing="10">-->
+<!--        <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14px; -fx-min-width: 80px;" text="Payment:" />-->
+<!--        <TextField fx:id="paymentField" promptText="Enter payment amount" style="-fx-pref-width: 250px;" />-->
+<!--    </HBox>-->
 
     <Button fx:id="addCustomerButton" alignment="CENTER" onAction="#handleAddCustomer" style="-fx-font-size: 14px; -fx-pref-width: 150px;" text="Add Customer" />
 
