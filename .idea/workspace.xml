@@ -9,23 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="1st relase code">
+    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="2nd release">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +180,7 @@
       <workItem from="1728019237187" duration="2832000" />
       <workItem from="1728036178484" duration="605000" />
       <workItem from="1728062123318" duration="7241000" />
-      <workItem from="1728097488822" duration="5028000" />
+      <workItem from="1728097488822" duration="5686000" />
     </task>
     <task id="LOCAL-00001" summary="make login and history tables and impliment uses">
       <option name="closed" value="true" />
@@ -227,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728062922724</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2nd release">
+      <option name="closed" value="true" />
+      <created>1728104781005</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728104781005</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +233,7 @@
     <MESSAGE value="all function work for user and customers" />
     <MESSAGE value="fix db and its work fine in jar" />
     <MESSAGE value="1st relase code" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st relase code" />
+    <MESSAGE value="2nd release" />
+    <option name="LAST_COMMIT_MESSAGE" value="2nd release" />
   </component>
 </project>
