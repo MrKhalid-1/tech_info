@@ -24,7 +24,6 @@ public class SignupController {
     private void handleSignup() {
         String username = signupUsernameField.getText();
         String password = signupPasswordField.getText();
-
         if (!isUserRegistered()) {
             saveUser(username, password);
             System.out.println("User created successfully!");

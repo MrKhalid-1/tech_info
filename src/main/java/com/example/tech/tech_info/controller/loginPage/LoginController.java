@@ -28,7 +28,6 @@ public class LoginController {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-
         if (validateUser(username, password)) {
             System.out.println("Login successful");
             Stage stage = (Stage) usernameField.getScene().getWindow();

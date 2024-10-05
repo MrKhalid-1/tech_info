@@ -139,14 +139,11 @@ public class CustomerController {
             showAlert("No Selection", "Please select a customer to add payment.");
             return;
         }
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/AddPayment.fxml"));
             Parent root = loader.load();
-
             AddPaymentDialogController dialogController = loader.getController();
             dialogController.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
-
             Stage stage = new Stage();
             stage.setTitle("Add Payment for " + selectedCustomer.getName());
             stage.setScene(new Scene(root));
@@ -189,18 +186,14 @@ public class CustomerController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml"));
             Pane page = loader.load();
-
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Add Customer");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(tableView.getScene().getWindow());
-
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-
             AddCustomerDialogController controller = loader.getController();
             controller.setMainController(this);
-
             dialogStage.showAndWait();
 
         } catch (Exception e) {
@@ -211,7 +204,6 @@ public class CustomerController {
     @FXML
     private void handleDeleteCustomer() {
         TCustomer.Customer selectedCustomer = tableView.getSelectionModel().getSelectedItem();
-
         if (selectedCustomer != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Delete Customer");
@@ -264,21 +256,16 @@ public class CustomerController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml"));
                 Pane page = loader.load();
-
                 Stage dialogStage = new Stage();
                 dialogStage.setTitle("Update Customer");
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.initOwner(tableView.getScene().getWindow());
-
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
-
                 UpdateCustomerDialogController controller = loader.getController();
                 controller.setMainController(this);
                 controller.setCustomer(selectedCustomer);
-
                 dialogStage.showAndWait();
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -309,7 +296,6 @@ public class CustomerController {
     public void handleLogout() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Logout");
-
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.close();
         showLoginScreen();
@@ -319,14 +305,11 @@ public class CustomerController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/loginPage/Login.fxml"));
             Pane loginPage = loader.load();
-
             Stage loginStage = new Stage();
             loginStage.setTitle("Login");
             loginStage.initModality(Modality.WINDOW_MODAL);
-
             Scene scene = new Scene(loginPage);
             loginStage.setScene(scene);
-
             loginStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -340,21 +323,16 @@ public class CustomerController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml"));
                 Pane page = loader.load();
-
                 Stage dialogStage = new Stage();
                 dialogStage.setTitle("Transaction History");
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.initOwner(tableView.getScene().getWindow());
-
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
-
                 TransactionHistory controller = loader.getController();
-                controller.setCustomerId(Math.toIntExact(selectedCustomer.getId())); // Fix here
-                controller.loadTransactionHistory(); // Load transaction history based on customerId
-
+                controller.setCustomerId(Math.toIntExact(selectedCustomer.getId()));
+                controller.loadTransactionHistory();
                 dialogStage.showAndWait();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

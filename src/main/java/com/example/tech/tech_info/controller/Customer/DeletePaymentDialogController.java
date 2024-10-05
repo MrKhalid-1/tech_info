@@ -3,6 +3,7 @@ package com.example.tech.tech_info.controller.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,6 +20,9 @@ public class DeletePaymentDialogController {
 
     @FXML
     private TextField commentField;
+
+    @FXML
+    private DatePicker datePicker;
 
     private int customerId;
 
@@ -48,16 +52,17 @@ public class DeletePaymentDialogController {
     }
 
 
-    public void deletePaymentToHistory(int customerId, String comment, double paymentAmount) {
-        String sql = "INSERT INTO historyPayment (customerId, comment, amount) VALUES (?, ?, ?)";
+    public void deletePaymentToHistory(int customerId, String comment, double paymentAmount , java.sql.Date receivedDate ) {
+        String sql = "INSERT INTO historyPayment (customerId, comment, amount,received_date) VALUES (?,?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, customerId);
             pstmt.setString(2, comment);
             pstmt.setDouble(3, -paymentAmount);
+            pstmt.setDate(4, receivedDate);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             showAlert("Database Error", "Unable to record payment history. Please try again.");
-            e.printStackTrace(); // Log the exception
+            e.printStackTrace();
         }
     }
 
@@ -65,23 +70,22 @@ public class DeletePaymentDialogController {
     private void handledeletePayment() {
         String amountText = amountField.getText();
         String commentText = commentField.getText();
-
         if (amountText.isEmpty() || commentText.isEmpty()) {
             showAlert("Input Error", "Please fill in both amount and comment fields.");
             return;
         }
-
         try {
             double paymentAmount = Double.parseDouble(amountText);
-
             if (paymentAmount <= 0) {
                 showAlert("Invalid Amount", "Please enter a positive amount.");
                 return;
             }
-
+            java.sql.Date receivedDate = (datePicker.getValue() != null)
+                    ? java.sql.Date.valueOf(datePicker.getValue())
+                    : new java.sql.Date(System.currentTimeMillis());
             if (showConfirmationAlert("Delete Payment", "Are you sure you want to delete " + paymentAmount + " as a payment?")) {
                 deleteCustomerPayment(customerId, paymentAmount);
-                deletePaymentToHistory(customerId, commentText, paymentAmount);
+                deletePaymentToHistory(customerId, commentText, paymentAmount,receivedDate);
                 Stage stage = (Stage) amountField.getScene().getWindow();
                 stage.close();
             }

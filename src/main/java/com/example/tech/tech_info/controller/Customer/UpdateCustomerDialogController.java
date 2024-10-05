@@ -20,9 +20,6 @@ public class UpdateCustomerDialogController {
     @FXML
     private TextField aadharCardNumberField;
 
-//    @FXML
-//    private TextField paymentField;
-
     @FXML
     private Button updateButton;
 
@@ -48,7 +45,6 @@ public class UpdateCustomerDialogController {
         addressField.setText(customer.getAddress());
         mobileField.setText(customer.getMobile());
         aadharCardNumberField.setText(customer.getAadharCardNumber());
-//        paymentField.setText(String.valueOf(customer.getPayment()));
     }
 
         private void handleUpdate () {
@@ -57,13 +53,6 @@ public class UpdateCustomerDialogController {
             String mobile = mobileField.getText();
             String aadharCardNumber = aadharCardNumberField.getText();
             Double payment = null;
-
-//            try {
-//                payment = Double.parseDouble(paymentField.getText());
-//            } catch (NumberFormatException e) {
-//                mainController.showAlert("Invalid Input", "Please enter valid numbers for mobile and payment.");
-//                return;
-//            }
 
             if (name.isEmpty() || address.isEmpty() || mobile.isEmpty()) {
                 mainController.showAlert("Missing Information", "Please fill in all fields.");

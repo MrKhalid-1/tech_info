@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.DatePicker?>
 <VBox alignment="CENTER" prefHeight="500.0" prefWidth="440.0" spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/8.0.171"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tech.tech_info.controller.Customer.DeletePaymentDialogController">
 
@@ -21,10 +22,10 @@
         <TextField fx:id="commentField" promptText="Enter comment" style="-fx-pref-width: 250px;" />
     </HBox>
 
-<!--    <HBox spacing="10">-->
-<!--        <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14px; -fx-min-width: 80px;" text="Date:" />-->
-<!--        <TextField fx:id="dateField" prefHeight="31.0" prefWidth="313.0" promptText="Enter add reviced payment" style="-fx-pref-width: 250px;" />-->
-<!--    </HBox>-->
+    <HBox spacing="10">
+        <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14px; -fx-min-width: 80px;" text="Date:" />
+        <DatePicker fx:id="datePicker" style="-fx-pref-width: 250px;" />
+    </HBox>
 
 
     <Button fx:id="deletePaymentButton" alignment="CENTER" onAction="#handledeletePayment" style="-fx-font-size: 14px; -fx-pref-width: 150px;" text="delete Payment" />

@@ -18,7 +18,7 @@ public class DatabaseConnection {
         try {
             File dbFile = new File(DB_PATH, DB_NAME);
             if (!dbFile.exists()) {
-                createDatabaseAndTables();  // Create the database and tables if not exist
+                createDatabaseAndTables();
             }
             connection = DriverManager.getConnection(URL);
             System.out.println("Connected to the database successfully.");
@@ -28,24 +28,12 @@ public class DatabaseConnection {
         return connection;
     }
 
-//    public Connection connect() {
-//        try {
-//            if (connection == null || connection.isClosed()) {
-//                connection = DriverManager.getConnection(URL);
-//            }
-//        } catch (SQLException e) {
-//            System.err.println("Database connection failed: " + e.getMessage());
-//        }
-//        return connection;
-//    }
-
 
     public static void createDatabaseAndTables() {
         File dbDir = new File(DB_PATH);
         if (!dbDir.exists()) {
             dbDir.mkdirs();
         }
-
         try (Connection connection = DriverManager.getConnection(URL)) {
             Statement statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS customers (" +
@@ -55,19 +43,18 @@ public class DatabaseConnection {
                     "mobile TEXT(12) NOT NULL UNIQUE, " +
                     "aadharCardNumber TEXT(14), " +
                     "payment REAL);");
-
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS user (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "username VARCHAR(50) NOT NULL, " +
                     "password VARCHAR(255) NOT NULL);");
-
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS historyPayment (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "customerId INTEGER, " +
-                    "comment TEXT, " +
-                    "amount DOUBLE, " +
-                    "received_date DATE DEFAULT (DATE('now')), " +
-                    "FOREIGN KEY (customerId) REFERENCES customers(id));");
+            statement.executeUpdate("CREATE TABLE historyPayment (\n" +
+                    "    id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    customerId INTEGER,\n" +
+                    "    comment TEXT,\n" +
+                    "    amount DOUBLE,\n" +
+                    "    received_date DATE DEFAULT (DATE('now')),\n" +
+                    "    image BLOB, imageName TEXT, imagePath TEXT,\n" +
+                     "  FOREIGN KEY (customerId) REFERENCES customers(id) ON DELETE CASCADE);");
 
             System.out.println("Database and tables created successfully.");
         } catch (SQLException e) {

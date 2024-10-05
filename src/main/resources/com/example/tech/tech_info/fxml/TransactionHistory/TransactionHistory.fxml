@@ -5,17 +5,20 @@
 
 <VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.tech.tech_info.controller.TransactionHistory.TransactionHistory">
-    <Label text="Payment History"/>
+    <Label text="Payment History" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-    <!-- Only TableView for displaying transactions -->
     <TableView fx:id="historyTable">
         <columns>
             <TableColumn fx:id="idColumn" text="ID" />
-            <TableColumn fx:id="customerIdColumn" text="customerId" />
+            <TableColumn fx:id="customerIdColumn" text="Customer ID" />
             <TableColumn fx:id="commentColumn" text="Comment" />
             <TableColumn fx:id="amountColumn" text="Amount" />
             <TableColumn fx:id="receivedDateColumn" text="Received Date" />
+            <TableColumn fx:id="imageColumn" text="Download Image" />
+            <TableColumn fx:id="deleteColumn" text="Delete" />
+            <TableColumn fx:id="updateColumn" text="Update" />
         </columns>
     </TableView>
 
+    <Button text="Close" onAction="#closeWindow" style="-fx-background-color: #ff6347; -fx-text-fill: white;" />
 </VBox>

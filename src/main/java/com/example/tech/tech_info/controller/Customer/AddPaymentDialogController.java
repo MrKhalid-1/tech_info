@@ -1,15 +1,16 @@
 package com.example.tech.tech_info.controller.Customer;
 
-import com.example.tech.tech_info.entity.TCustomer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableView;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,6 +18,13 @@ import java.sql.SQLException;
 import static com.example.tech.tech_info.dao.DatabaseConnection.getConnection;
 
 public class AddPaymentDialogController {
+
+    private byte[] imageBytes;
+
+    private String imageName;
+
+    @FXML
+    private DatePicker datePicker;
 
     @FXML
     private TextField amountField;
@@ -28,6 +36,22 @@ public class AddPaymentDialogController {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    @FXML
+    private void handleSelectImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image");
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            try (FileInputStream fis = new FileInputStream(file)) {
+                imageBytes = fis.readAllBytes();
+                imageName = file.getName();
+                System.out.println("Image selected: " + imageName);
+            } catch (IOException e) {
+                showAlert("File Error", "Unable to load image. Please try again.");
+            }
+        }
     }
 
     public void updateCustomerPayment(int customerId, double paymentAmount) {
@@ -49,18 +73,27 @@ public class AddPaymentDialogController {
         }
     }
 
-    public void addPaymentToHistory(int customerId, String comment, double paymentAmount) {
-        String sql = "INSERT INTO historyPayment (customerId, comment, amount) VALUES (?, ?, ?)";
+    public void addPaymentToHistory(int customerId, String comment, double paymentAmount, java.sql.Date receivedDate) {
+        String sql = "INSERT INTO historyPayment (customerId, comment, amount, received_date, image, imageName) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, customerId);
             pstmt.setString(2, comment);
             pstmt.setDouble(3, paymentAmount);
+            pstmt.setDate(4, receivedDate);
+            if (imageBytes != null) {
+                pstmt.setBytes(5, imageBytes);
+                pstmt.setString(6, imageName);
+            } else {
+                pstmt.setNull(5, java.sql.Types.BLOB);
+                pstmt.setNull(6, java.sql.Types.VARCHAR);
+            }
             pstmt.executeUpdate();
         } catch (SQLException e) {
             showAlert("Database Error", "Unable to record payment history. Please try again.");
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void handleAddPayment() {
@@ -71,18 +104,18 @@ public class AddPaymentDialogController {
             showAlert("Input Error", "Please fill in both amount and comment fields.");
             return;
         }
-
         try {
             double paymentAmount = Double.parseDouble(amountText);
-
             if (paymentAmount <= 0) {
                 showAlert("Invalid Amount", "Please enter a positive amount.");
                 return;
             }
-
+            java.sql.Date receivedDate = (datePicker.getValue() != null)
+                    ? java.sql.Date.valueOf(datePicker.getValue())
+                    : new java.sql.Date(System.currentTimeMillis());
             if (showConfirmationAlert("Add Payment", "Are you sure you want to add " + paymentAmount + " as a payment?")) {
                 updateCustomerPayment(customerId, paymentAmount);
-                addPaymentToHistory(customerId, commentText, paymentAmount);
+                addPaymentToHistory(customerId, commentText, paymentAmount, receivedDate);
                 Stage stage = (Stage) amountField.getScene().getWindow();
                 stage.close();
             }
@@ -107,4 +140,3 @@ public class AddPaymentDialogController {
         alert.showAndWait();
     }
 }
-

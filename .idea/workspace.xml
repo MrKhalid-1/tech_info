@@ -9,17 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="fix db and its work fine in jar">
+    <list default="true" id="d64b344d-0607-4ad5-8c7f-b06e6266aa1f" name="Changes" comment="1st relase code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/SceneSwitcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddCustomerDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/AddPaymentDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/DeletePaymentDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/Customer/UpdateCustomerDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/TransactionHistory/TransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/controller/loginPage/SignupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/dao/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/Customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/Customer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/UpdateCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tech/tech_info/entity/TPaymentHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/TransactionHistory/TransactionHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/AddPayment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tech/tech_info/fxml/customer/DeletePayment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlite/management.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,31 +71,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DatabaseConnection.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MyApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/abkha/OneDrive/Desktop/tech_info&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DatabaseConnection.executor": "Debug",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MyApp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/hp/work/tech_info/src/main/java/com/example/tech/tech_info",
+    "last_opened_file_path": "C:/Users/abkha/OneDrive/Desktop/tech_info",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abkha\OneDrive\Desktop\tech_info\src\main\resources\com\example\tech\tech_info\fxml\loginPage" />
@@ -106,7 +112,7 @@
       <recent name="com.example.tech.tech_info" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerController">
+  <component name="RunManager">
     <configuration name="CustomerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tech.tech_info.controller.Customer.CustomerController" />
       <module name="tech_info" />
@@ -186,6 +192,8 @@
       <workItem from="1727842007149" duration="9000" />
       <workItem from="1728019237187" duration="2832000" />
       <workItem from="1728036178484" duration="605000" />
+      <workItem from="1728062123318" duration="7241000" />
+      <workItem from="1728097488822" duration="5028000" />
     </task>
     <task id="LOCAL-00001" summary="make login and history tables and impliment uses">
       <option name="closed" value="true" />
@@ -211,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727786633151</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1st relase code">
+      <option name="closed" value="true" />
+      <created>1728062922724</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728062922724</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +237,7 @@
     <MESSAGE value="make login and history tables and impliment uses" />
     <MESSAGE value="all function work for user and customers" />
     <MESSAGE value="fix db and its work fine in jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix db and its work fine in jar" />
+    <MESSAGE value="1st relase code" />
+    <option name="LAST_COMMIT_MESSAGE" value="1st relase code" />
   </component>
 </project>

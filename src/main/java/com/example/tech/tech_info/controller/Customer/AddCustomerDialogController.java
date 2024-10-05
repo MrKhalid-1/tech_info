@@ -19,9 +19,6 @@ public class AddCustomerDialogController {
     @FXML
     private TextField aadharCardNumberField;
 
-//    @FXML
-//    private TextField paymentField;
-
     private CustomerController mainController;
 
     public void setMainController(CustomerController mainController) {
@@ -34,21 +31,13 @@ public class AddCustomerDialogController {
         String address = addressField.getText();
         String mobileText = mobileField.getText();
         String aadharCardNumber = aadharCardNumberField.getText();
-//        String paymentText = paymentField.getText();
-
         if (name == null || name.trim().isEmpty() ||
                 address == null || address.trim().isEmpty() ||
                 mobileText == null || mobileText.trim().isEmpty()) {
             showAlert("Input Error", "Required fields must be filled out.");
             return;
         }
-
-//        if (paymentText == null || paymentText.trim().isEmpty()) {
-//            paymentText = "0";
-//        }
-
         try {
-//            Double payment = Double.parseDouble(paymentText);
             Double payment = 0.0 ;
             mainController.addCustomerToDatabase(name, address, mobileText, aadharCardNumber, payment);
             mainController.loadCustomerData();
